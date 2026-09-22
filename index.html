@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
+
+  <meta name="theme-color" content="#050914">
+
+  <meta
+    name="description"
+    content="ÚtilHub V18 — herramientas útiles, rápidas y organizadas con NOVA FLOW."
+  >
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="ÚtilHub">
+
+  <title>ÚtilHub V18 — NOVA FLOW</title>
+
+  <!-- ICONO INTEGRADO EN CÓDIGO -->
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2322d3ee'/%3E%3Cstop offset='.5' stop-color='%233b82f6'/%3E%3Cstop offset='1' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3Cfilter id='s'%3E%3CfeGaussianBlur stdDeviation='2' result='b'/%3E%3CfeMerge%3E%3CfeMergeNode in='b'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Crect width='128' height='128' rx='30' fill='%23050914'/%3E%3Crect x='5' y='5' width='118' height='118' rx='27' fill='none' stroke='url(%23g)' stroke-width='5'/%3E%3Ccircle cx='26' cy='27' r='5' fill='%2322d3ee' filter='url(%23s)'/%3E%3Ccircle cx='103' cy='93' r='4' fill='%238b5cf6' filter='url(%23s)'/%3E%3Ctext x='64' y='78' text-anchor='middle' font-family='Arial,sans-serif' font-size='48' font-weight='900' fill='url(%23g)'%3EUH%3C/text%3E%3Cpath d='M15 94c25-20 62-28 99-14' fill='none' stroke='%2322d3ee' stroke-width='3.5' stroke-linecap='round'/%3E%3C/svg%3E"
+  >
+
+  <!-- PWA -->
+  <link rel="manifest" href="./manifest.webmanifest">
+
+  <!-- ESTILOS -->
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+  <!-- =====================================================
+       NOVA FLOW — CANVAS PRINCIPAL
+  ====================================================== -->
+
+  <canvas id="nova" aria-hidden="true"></canvas>
+
+  <!-- Brillo ambiental -->
+  <div id="glow" aria-hidden="true"></div>
+
+  <!-- =====================================================
+       APP
+  ====================================================== -->
+
+  <div class="app" id="app">
+
+    <!-- ===================================================
+         BARRA SUPERIOR
+    ==================================================== -->
+
+    <header class="topbar">
+
+      <a href="#inicio" class="brand" aria-label="Ir al inicio">
+
+        <div class="brand-icon" aria-hidden="true">
+          <span>UH</span>
+        </div>
+
+        <div class="brand-text">
+          <strong>ÚtilHub</strong>
+          <small>V18 • NOVA FLOW</small>
+        </div>
+
+      </a>
+
+      <div class="top-actions">
+
+        <button
+          id="themeBtn"
+          class="icon-btn"
+          type="button"
+          title="Cambiar tema"
+          aria-label="Cambiar tema"
+        >
+          ☀
+        </button>
+
+        <button
+          id="motionBtn"
+          class="icon-btn"
+          type="button"
+          title="Activar o desactivar animaciones"
+          aria-label="Activar o desactivar animaciones"
+        >
+          ✦
+        </button>
+
+        <button
+          id="focusBtn"
+          class="icon-btn"
+          type="button"
+          title="Modo concentración"
+          aria-label="Modo concentración"
+        >
+          ◉
+        </button>
+
+      </div>
+
+    </header>
+
+
+    <!-- ===================================================
+         CONTENIDO PRINCIPAL
+    ==================================================== -->
+
+    <main>
+
+      <!-- =================================================
+           INICIO
+      ================================================== -->
+
+      <section
+        class="hero"
+        id="inicio"
+        aria-labelledby="heroTitle"
+      >
+
+        <div class="hero-badge">
+          <span class="status-dot"></span>
+          ÚTILHUB V18
+          <span class="badge-separator">•</span>
+          NOVA FLOW
+        </div>
+
+        <h1 id="heroTitle">
+          Todo lo útil,
+          <span>en un solo lugar.</span>
+        </h1>
+
+        <p>
+          Calcula, convierte, organiza, estudia, crea listas y utiliza
+          herramientas prácticas para el día a día.
+        </p>
+
+        <div class="hero-actions">
+
+          <button
+            class="primary-btn"
+            data-open="calculator"
+            type="button"
+          >
+            ⚡ Abrir calculadora
+          </button>
+
+          <button
+            class="secondary-btn"
+            id="searchFocusBtn"
+            type="button"
+          >
+            🔎 Buscar herramienta
+          </button>
+
+        </div>
+
+        <div class="hero-stats">
+
+          <div class="hero-stat">
+            <strong>20</strong>
+            <span>NOVA FLOW</span>
+          </div>
+
+          <div class="hero-stat">
+            <strong>26+</strong>
+            <span>Herramientas</span>
+          </div>
+
+          <div class="hero-stat">
+            <strong>100%</strong>
+            <span>Local</span>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           NOVA FLOW
+      ================================================== -->
+
+      <section
+        class="nova-section"
+        id="novaSection"
+        aria-labelledby="novaTitle"
+      >
+
+        <div class="section-heading">
+
+          <div>
+
+            <span class="section-label">
+              NOVA FLOW V18
+            </span>
+
+            <h2 id="novaTitle">
+              Elige tu animación
+            </h2>
+
+            <p>
+              Cada usuario puede elegir el efecto visual que prefiera.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="nova-panel">
+
+          <!-- ESTADO -->
+
+          <div class="nova-status">
+
+            <div>
+
+              <small>
+                ANIMACIÓN ACTUAL
+              </small>
+
+              <strong id="novaModeName">
+                COSMIC
+              </strong>
+
+            </div>
+
+            <div class="nova-indicator">
+              <span></span>
+              ACTIVO
+            </div>
+
+          </div>
+
+
+          <!-- 20 MODOS -->
+
+          <div
+            class="novaModes"
+            id="novaModes"
+            aria-label="Modos de NOVA FLOW"
+          >
+
+            <button
+              class="mode active"
+              data-mode="cosmic"
+              type="button"
+            >
+              COSMIC
+            </button>
+
+            <button
+              class="mode"
+              data-mode="aurora"
+              type="button"
+            >
+              AURORA
+            </button>
+
+            <button
+              class="mode"
+              data-mode="pulse"
+              type="button"
+            >
+              PULSE
+            </button>
+
+            <button
+              class="mode"
+              data-mode="matrix"
+              type="button"
+            >
+              MATRIX
+            </button>
+
+            <button
+              class="mode"
+              data-mode="nebula"
+              type="button"
+            >
+              NEBULA
+            </button>
+
+            <button
+              class="mode"
+              data-mode="waves"
+              type="button"
+            >
+              WAVES
+            </button>
+
+            <button
+              class="mode"
+              data-mode="starfield"
+              type="button"
+            >
+              STARFIELD
+            </button>
+
+            <button
+              class="mode"
+              data-mode="vortex"
+              type="button"
+            >
+              VORTEX
+            </button>
+
+            <button
+              class="mode"
+              data-mode="firefly"
+              type="button"
+            >
+              FIREFLY
+            </button>
+
+            <button
+              class="mode"
+              data-mode="rain"
+              type="button"
+            >
+              RAIN
+            </button>
+
+            <button
+              class="mode"
+              data-mode="grid"
+              type="button"
+            >
+              GRID
+            </button>
+
+            <button
+              class="mode"
+              data-mode="spiral"
+              type="button"
+            >
+              SPIRAL
+            </button>
+
+            <button
+              class="mode"
+              data-mode="orbit"
+              type="button"
+            >
+              ORBIT
+            </button>
+
+            <button
+              class="mode"
+              data-mode="plasma"
+              type="button"
+            >
+              PLASMA
+            </button>
+
+            <button
+              class="mode"
+              data-mode="dna"
+              type="button"
+            >
+              DNA
+            </button>
+
+            <button
+              class="mode"
+              data-mode="snow"
+              type="button"
+            >
+              SNOW
+            </button>
+
+            <button
+              class="mode"
+              data-mode="lightning"
+              type="button"
+            >
+              LIGHTNING
+            </button>
+
+            <button
+              class="mode"
+              data-mode="galaxy"
+              type="button"
+            >
+              GALAXY
+            </button>
+
+            <button
+              class="mode"
+              data-mode="comet"
+              type="button"
+            >
+              COMET
+            </button>
+
+            <button
+              class="mode"
+              data-mode="quantum"
+              type="button"
+            >
+              QUANTUM
+            </button>
+
+          </div>
+
+
+          <!-- CONTROLES NOVA -->
+
+          <div class="nova-controls">
+
+            <label class="range-control">
+
+              <span>
+                Intensidad
+              </span>
+
+              <input
+                id="novaIntensity"
+                type="range"
+                min="0.1"
+                max="1"
+                step="0.05"
+                value="0.8"
+              >
+
+              <output id="novaIntensityValue">
+                80%
+              </output>
+
+            </label>
+
+
+            <label class="select-control">
+
+              <span>
+                Rendimiento
+              </span>
+
+              <select id="performanceSelect">
+
+                <option value="quality">
+                  Calidad
+                </option>
+
+                <option
+                  value="balanced"
+                  selected
+                >
+                  Equilibrado
+                </option>
+
+                <option value="performance">
+                  Rendimiento
+                </option>
+
+              </select>
+
+            </label>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           HERRAMIENTAS
+      ================================================== -->
+
+      <section
+        class="tools-section"
+        id="herramientas"
+        aria-labelledby="toolsTitle"
+      >
+
+        <div class="section-heading">
+
+          <div>
+
+            <span class="section-label">
+              HERRAMIENTAS
+            </span>
+
+            <h2 id="toolsTitle">
+              ¿Qué necesitas?
+            </h2>
+
+            <p>
+              Encuentra rápidamente una herramienta.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- BUSCADOR -->
+
+        <div class="search-box">
+
+          <span aria-hidden="true">
+            ⌕
+          </span>
+
+          <input
+            id="toolSearch"
+            type="search"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="Buscar calculadora, notas, compras..."
+            aria-label="Buscar herramienta"
+          >
+
+          <button
+            id="clearSearch"
+            class="search-clear"
+            type="button"
+            aria-label="Limpiar búsqueda"
+          >
+            ×
+          </button>
+
+          <kbd>
+            Ctrl K
+          </kbd>
+
+        </div>
+
+
+        <!-- CATEGORÍAS -->
+
+        <div
+          class="categories"
+          id="categories"
+          aria-label="Categorías de herramientas"
+        >
+
+          <button
+            class="category active"
+            data-category="all"
+            type="button"
+          >
+            Todo
+          </button>
+
+          <button
+            class="category"
+            data-category="math"
+            type="button"
+          >
+            Cálculo
+          </button>
+
+          <button
+            class="category"
+            data-category="convert"
+            type="button"
+          >
+            Conversores
+          </button>
+
+          <button
+            class="category"
+            data-category="time"
+            type="button"
+          >
+            Tiempo
+          </button>
+
+          <button
+            class="category"
+            data-category="productivity"
+            type="button"
+          >
+            Productividad
+          </button>
+
+          <button
+            class="category"
+            data-category="text"
+            type="button"
+          >
+            Texto
+          </button>
+
+          <button
+            class="category"
+            data-category="shopping"
+            type="button"
+          >
+            Compras
+          </button>
+
+        </div>
+
+
+        <!-- GRID DE HERRAMIENTAS -->
+
+        <div
+          class="tools-grid"
+          id="toolsGrid"
+        >
+
+          <button
+            class="tool-card"
+            data-open="calculator"
+            data-category="math"
+            data-name="calculadora cálculo operaciones"
+            type="button"
+          >
+            <span>🧮</span>
+            <b>Calculadora</b>
+            <small>Cálculos rápidos</small>
+          </button>
+
+
+          <button
+            class="tool-card"
+            data-open="percentage"
+            data-category="math"
+            data-name="porcentajes porcentaje"
+            type="button"
+          >
+            <span>％</span>
+            <b>Porcentajes</b>
+            <small>Calcula porcentajes</small>
+          </button>
+
+
+          <button
+            class="tool-card"
+            data-open="discount"
+            data-category="math"
+            data-name="descuento precio oferta"
+            type="button"
+          >
+            <span>🏷</span>
+            <b>Descuento</b>
+            <small>Calcula el precio final</small>
+          </button>
+
+
+          <button
+            class="tool-card"
+            data-open="rule3"
+            data-category="math"
+            data-name="regla de tres proporciones"
+            type="button"
+          >
+            <span>⚖</span>
+            <b>Regla de 3</b>
+            <small>Resuelve proporciones</small>
+          </button>
+
+
+          <button
+            class="tool-card"
+            data-open="length"
+            data-category="convert"
+            data-name="longitud metros kilómetros centímetros"
+            type="button"
+          >
+            <span>📏</span>
+            <b>Longitud</b>
+            <small>Convierte medidas</small>
+          </button>
+
+
+          <button
+            class="tool-card"
+            data-open="weight"
+            data-category="convert"
+            data-name="peso kilos gramos libras"
+            type="button"
+          >
+            <span>⚖️</span>
+            <b>Peso</b>
+            <small>Convierte unidades</small>
+          </button>
+
+
+          <button
+            class="tool-card"
+            data-open="volume"
+            data-category="convert"
+            data-name="volumen litros mililitros"
+            type="button"
+          >
+            <span>🧪</span>
+            <b>Volumen</b>
+            <small>Convierte volumen</small>
+          </button>
+
+
+          <button
+            class="tool-card"
+            data-open="temperature"
+            data-category="convert"
+            data-name="temperatura celsius fahrenheit kelvin"
+            type="button"
+          >
+            <span>🌡</span>
+            <b>Temperatura</b>
+            <small>°C • °F • K</small>
+          </button>
+
+
+          <button
+            class="tool-card"
+            data-open="timeconvert"
+            data-category="convert"
+            data-name="tiempo segundos minutos horas"
+            type="button"
+          >
+            <span>⏱</span>
+            <b>Tiempo</b>
+            <small>Convierte unidades</small>
+          </button>
+
+
+          <button
+            class="tool-card"
+            data-open="currency"
+            data-category="convert"
+            data-name="moneda dinero conversión"
+            type="button"
+          >
+            <span>💱</span>
+            <b>Moneda</b>
+            <small>Conversión monetaria</small>
+          </button>
+
+
+          <button
+            class="tool-card"
+            data-open="datediff"
+            data-category="time"
+            data-name="fechas días diferencia calendario"
+            type="button"
+          >
+            <span>📅</span>
+            <b>Días entre fechas</b>
+            <small>Calcula diferencias</small>
+          </button>
+
+
+          <button
+            class="tool-card"
+            data-open="age"
+            data-category="time"
+            data-name="edad cumpleaños nacimiento"
+            type="button"
+          >
+            <span>🎂</span>
+            <b>Edad</b>
+            <small>Calcula tu edad</small>
+          </button>
+
+
+          <button
+            class="tool-card"
+            data-open="timer"
+            data-category="time"
+            data-name="temporizador cuenta regresiva"
+            type="button"
+          >
+            <span>⏳</span>
+            <b>Temporizador</b>
+            <small>Cuenta regresiva</small>
+          </button>
+
+
+          <button
+            class="tool-card"
+            data-open="stopwatch"
+            data-category="time"
+            data-name="cronómetro medir tiempo"
+            type="button"
+          >
+            <span>⏱️</span>
+            <b>Cronómetro</b>
+            <small>Mide el tiempo</small>
+          </button>
+
+
+          <button
+            class="tool-card"
+            data-open="clock"
+            data-category="time"
+            data-name="reloj hora actual"
+            type="button"
+          >
+            <span>🕐</span>
+            <b>Reloj</b>
+            <small>Hora actual</small>
+          </button>
+
+
+          <button
+            class="tool-card"
+            data-open="focus"
+            data-category="productivity"
+            data-name="concentración enfoque estudiar"
+            type="button"
+          >
+            <span>🎯</span>
+            <b>Concentración</b>
+            <small>Modo enfoque</small>
+          </button>
+
+
+          <button
+            class="tool-card"
+            data-open="text"
+            data-category="text"
+            data-name="texto palabras caracteres mayúsculas"
+            type="button"
+          >
+            <span>✍</span>
+            <b>Herramientas de texto</b>
+            <small>Cuenta y transforma</small>
+          </button>
+
+
+          <button
+            class="tool-card"
+            data-open="dictionary"
+            data-category="text"
+            data-name="diccionario palabras significado"
+            type="button"
+          >
+            <span>📖</span>
+            <b>Diccionario</b>
+            <small>Busca palabras</small>
+          </button>
+
+
+          <button
+            class="tool-card"
+            data-open="notes"
+            data-category="productivity"
+            data-name="notas apuntes escribir"
+            type="button"
+          >
+            <span>📝</span>
+            <b>Notas</b>
+            <small>Guarda tus ideas</small>
+          </button>
+
+
+          <button
+            class="tool-card"
+            data-open="tasks"
+            data-category="productivity"
+            data-name="tareas pendientes lista"
+            type="button"
+          >
+            <span>☑</span>
+            <b>Tareas</b>
+            <small>Organiza pendientes</small>
+          </button>
+
+
+          <button
+            class="tool-card"
+            data-open="shopping"
+            data-category="shopping"
+            data-name="compras lista supermercado"
+            type="button"
+          >
+            <span>🛒</span>
+            <b>Lista de compras</b>
+            <small>Organiza tus compras</small>
+          </button>
+
+
+          <button
+            class="tool-card"
+            data-open="food"
+            data-category="shopping"
+            data-name="comida restaurantes comprar comida"
+            type="button"
+          >
+            <span>🍔</span>
+            <b>Comidas</b>
+            <small>Busca dónde comprar</small>
+          </button>
+
+
+          <button
+            class="tool-card"
+            data-open="buy"
+            data-category="shopping"
+            data-name="comprar productos tiendas"
+            type="button"
+          >
+            <span>🛍</span>
+            <b>Compras</b>
+            <small>Busca productos</small>
+          </button>
+
+
+          <button
+            class="tool-card"
+            data-open="password"
+            data-category="productivity"
+            data-name="contraseña seguridad generar"
+            type="button"
+          >
+            <span>🔐</span>
+            <b>Contraseña</b>
+            <small>Generador aleatorio</small>
+          </button>
+
+
+          <button
+            class="tool-card"
+            data-open="random"
+            data-category="productivity"
+            data-name="aleatorio número azar"
+            type="button"
+          >
+            <span>🎲</span>
+            <b>Aleatorio</b>
+            <small>Número al azar</small>
+          </button>
+
+
+          <button
+            class="tool-card"
+            data-open="qr"
+            data-category="productivity"
+            data-name="qr código enlace texto"
+            type="button"
+          >
+            <span>▦</span>
+            <b>Código QR</b>
+            <small>Crea un QR</small>
+          </button>
+
+        </div>
+
+
+        <!-- RESULTADO DE BÚSQUEDA VACÍO -->
+
+        <div
+          id="noResults"
+          class="no-results hidden"
+        >
+          <span>🔎</span>
+          <h3>No encontramos esa herramienta</h3>
+          <p>
+            Prueba con otra palabra o selecciona otra categoría.
+          </p>
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           ACCESO RÁPIDO
+      ================================================== -->
+
+      <section
+        class="quick-section"
+        id="recientes"
+        aria-labelledby="quickTitle"
+      >
+
+        <div class="section-heading">
+
+          <div>
+
+            <span class="section-label">
+              ACCESO RÁPIDO
+            </span>
+
+            <h2 id="quickTitle">
+              Tus herramientas
+            </h2>
+
+            <p>
+              Aquí aparecerán las herramientas que utilizaste recientemente.
+            </p>
+
+          </div>
+
+          <button
+            id="clearRecent"
+            class="small-action"
+            type="button"
+          >
+            Limpiar
+          </button>
+
+        </div>
+
+
+        <div
+          id="quickTools"
+          class="quick-tools"
+        >
+
+          <p class="empty-state">
+            Todavía no tienes herramientas recientes.
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           PANEL DE HERRAMIENTA
+      ================================================== -->
+
+      <section
+        id="toolPanel"
+        class="tool-panel hidden"
+        aria-live="polite"
+        aria-labelledby="toolPanelTitle"
+      >
+
+        <div class="tool-panel-header">
+
+          <div class="tool-panel-heading">
+
+            <span
+              id="toolPanelIcon"
+              class="tool-panel-icon"
+            >
+              ⚡
+            </span>
+
+            <div>
+
+              <small id="toolPanelCategory">
+                HERRAMIENTA
+              </small>
+
+              <h2 id="toolPanelTitle">
+                Herramienta
+              </h2>
+
+            </div>
+
+          </div>
+
+
+          <button
+            id="closeTool"
+            class="close-btn"
+            type="button"
+            aria-label="Cerrar herramienta"
+          >
+            ×
+          </button>
+
+        </div>
+
+
+        <div
+          id="toolContent"
+          class="tool-content"
+        >
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           FOOTER
+      ================================================== -->
+
+      <footer>
+
+        <div class="footer-brand">
+          <div class="footer-icon">
+            UH
+          </div>
+
+          <div>
+            <strong>
+              ÚtilHub V18
+            </strong>
+
+            <span>
+              NOVA FLOW
+            </span>
+          </div>
+        </div>
+
+
+        <div class="footer-links">
+
+          <a href="#inicio">
+            Inicio
+          </a>
+
+          <a href="#novaSection">
+            NOVA FLOW
+          </a>
+
+          <a href="#herramientas">
+            Herramientas
+          </a>
+
+          <a href="#recientes">
+            Recientes
+          </a>
+
+        </div>
+
+
+        <p>
+          Herramientas útiles para el día a día.
+        </p>
+
+      </footer>
+
+    </main>
+
+  </div>
+
+
+  <!-- =====================================================
+       MODAL
+  ====================================================== -->
+
+  <div
+    id="modal"
+    class="modal hidden"
+    aria-hidden="true"
+  >
+
+    <div
+      class="modal-backdrop"
+      data-close-modal
+    ></div>
+
+    <div
+      class="modal-card"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitle"
+    >
+
+      <button
+        class="close-btn"
+        data-close-modal
+        type="button"
+        aria-label="Cerrar"
+      >
+        ×
+      </button>
+
+      <div id="modalContent"></div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       TOAST / NOTIFICACIONES
+  ====================================================== -->
+
+  <div
+    id="toast"
+    class="toast"
+    role="status"
+    aria-live="polite"
+  ></div>
+
+
+  <!-- =====================================================
+       SCRIPT PRINCIPAL
+  ====================================================== -->
+
+  <script src="./script.js"></script>
+
+</body>
+</html>
