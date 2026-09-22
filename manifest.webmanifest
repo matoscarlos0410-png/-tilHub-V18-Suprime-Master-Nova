@@ -1,0 +1,32 @@
+{
+  "name": "ÚtilHub V18 — NOVA FLOW",
+  "short_name": "ÚtilHub",
+  "description": "ÚtilHub V18: herramientas útiles, productividad, conversiones y 20 modos de NOVA FLOW.",
+  "lang": "es",
+  "dir": "ltr",
+
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+
+  "background_color": "#050914",
+  "theme_color": "#07111f",
+
+  "categories": [
+    "utilities",
+    "productivity",
+    "education"
+  ],
+
+  "prefer_related_applications": false,
+
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2322d3ee'/%3E%3Cstop offset='0.5' stop-color='%233b82f6'/%3E%3Cstop offset='1' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='512' height='512' rx='112' fill='%23050914'/%3E%3Ccircle cx='256' cy='256' r='175' fill='none' stroke='url(%23g)' stroke-width='28'/%3E%3Cpath d='M155 300c30 35 65 52 101 52 55 0 101-31 101-84 0-49-39-76-91-76h-27c-40 0-74-27-74-65 0-39 34-67 82-67 35 0 68 13 96 39' fill='none' stroke='white' stroke-width='24' stroke-linecap='round'/%3E%3Ccircle cx='256' cy='256' r='12' fill='%2322d3ee'/%3E%3C/svg%3E",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
